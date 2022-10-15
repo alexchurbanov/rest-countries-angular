@@ -1,0 +1,9 @@
+<section class="country" [ngClass]="{'dark': isDark}">
+  <img class="country-flag" [src]="country.flagURL" [alt]="country.name + ' flag'" loading="lazy">
+  <div class="country-info">
+    <h2 [title]="country.name">{{country.name | titlecase}}</h2>
+    <p>Region: {{country.region | titlecase}}</p>
+    <p>Population: {{country.population | number}}</p>
+    <p>Capital: {{country.capital | titlecase}}</p>
+  </div>
+</section>

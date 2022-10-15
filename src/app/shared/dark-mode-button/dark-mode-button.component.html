@@ -1,0 +1,5 @@
+<button type="button" class="dark-mode-button" [ngClass]="{'dark': darkMode$ | async}" [title]="modeText"
+        (click)='changeMode()'>
+  <span>{{modeText}}</span>
+  <span class="material-icons">{{icon}}</span>
+</button>
