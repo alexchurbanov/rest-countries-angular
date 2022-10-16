@@ -16,7 +16,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   isDark!: boolean;
   countriesList: CountryType[] = [];
   countriesVisible: CountryType[] = [];
-  offset: number = 10;
+  offset: number = 8;
 
   constructor(private countriesService: CountriesService,
               private darkModeService: DarkModeService,
@@ -41,7 +41,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
     .subscribe((value) => {
       this.countriesList = value;
       this.setVisible();
-      this.offset = 5;
+      this.offset = 4;
       this.changeDetector.markForCheck();
     });
 

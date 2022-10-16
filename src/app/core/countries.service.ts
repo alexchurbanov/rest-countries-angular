@@ -45,7 +45,7 @@ export class CountriesService {
           name: item.name.common,
           officialName: item.name.official,
           capital: item.capital ? item.capital[0] : 'Has no capital',
-          region: item.region,
+          region: `${item.region} (${item.subregion})`,
           population: item.population,
           languages: item.languages ? Object.values(item.languages) : ['Has no official languages'],
           flagURL: item.flags.png,

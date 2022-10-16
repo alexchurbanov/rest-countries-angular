@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DarkModeService, DarkModeSourceType } from "../dark-mode.service";
 import { tap } from "rxjs";
 
@@ -7,17 +7,13 @@ import { tap } from "rxjs";
   templateUrl: './dark-mode-button.component.html',
   styleUrls: ['./dark-mode-button.component.sass']
 })
-export class DarkModeButtonComponent implements OnInit {
+export class DarkModeButtonComponent {
   modeText!: string;
   icon!: string;
-  darkMode$!: DarkModeSourceType;
+  darkMode$: DarkModeSourceType;
 
   constructor(private darkModeService: DarkModeService) {
-  }
-
-  ngOnInit(): void {
-    this.darkMode$ = this.darkModeService.darkMode$
-    .pipe(
+    this.darkMode$ = this.darkModeService.darkMode$.pipe(
       tap(value => {
         this.icon = value ? 'light_mode' : 'dark_mode';
         this.modeText = value ? 'Light mode' : 'Dark mode';
@@ -28,6 +24,4 @@ export class DarkModeButtonComponent implements OnInit {
   changeMode() {
     this.darkModeService.toggle();
   }
-
-
 }
