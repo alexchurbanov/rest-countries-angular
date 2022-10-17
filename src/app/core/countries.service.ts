@@ -4,15 +4,10 @@ import { catchError, map, of, tap } from "rxjs";
 
 export interface CountryType {
   name: string;
-  officialName: string;
   capital: string;
   region: string;
   population: number;
-  languages: Array<string>;
   flagURL: string;
-  coatOfArmsURL: string;
-  googleMapsURL: string;
-  timezones: Array<string>;
 }
 
 @Injectable({
@@ -43,15 +38,10 @@ export class CountriesService {
       map<Array<any>, CountryType[]>((data) => {
         const mapped: CountryType[] = data.map(item => ({
           name: item.name.common,
-          officialName: item.name.official,
           capital: item.capital ? item.capital[0] : 'Has no capital',
-          region: `${item.region} (${item.subregion})`,
+          region: `${item.region} ${item.subregion ? '(' + item.subregion + ')' : ''}`,
           population: item.population,
-          languages: item.languages ? Object.values(item.languages) : ['Has no official languages'],
           flagURL: item.flags.png,
-          coatOfArmsURL: item.coatOfArms.svg,
-          googleMapsURL: item.maps.googleMaps,
-          timezones: item.timezones
         }));
         return mapped.sort((a, b) => {
           if (a.name > b.name) return 1;
