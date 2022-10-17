@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DarkModeButtonComponent } from './dark-mode-button/dark-mode-button.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
   declarations: [
-    DarkModeButtonComponent
+    DarkModeButtonComponent,
+    LoaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    DarkModeButtonComponent
+    DarkModeButtonComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule {

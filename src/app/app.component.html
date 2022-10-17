@@ -1,9 +1,10 @@
 <ng-container *ngIf="{isDark: darkMode$ | async} as darkMode">
-  <header [ngClass]="{'dark': darkMode.isDark}">
+  <app-loader [isDark]="!!darkMode.isDark"></app-loader>
+  <header [ngClass]="{'dark': !!darkMode.isDark}">
     <h1 title="Countries">Countries</h1>
     <app-dark-mode-button></app-dark-mode-button>
   </header>
-  <main [ngClass]="{'dark': darkMode.isDark}">
+  <main [ngClass]="{'dark': !!darkMode.isDark}">
     <router-outlet></router-outlet>
   </main>
 </ng-container>
