@@ -16,7 +16,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   isDark!: boolean;
   countriesList: CountryType[] = [];
   countriesVisible: CountryType[] = [];
-  offset: number = 8;
+  searchName: string = '';
 
   constructor(private countriesService: CountriesService,
               private darkModeService: DarkModeService,
@@ -27,21 +27,31 @@ export class CountryListComponent implements OnInit, OnDestroy {
     this.darkMode$ = darkModeService.darkMode$.pipe(takeUntil(this.unsub$));
   }
 
-  setVisible() {
-    const to = this.countriesVisible.length + this.offset;
-    this.countriesVisible = this.countriesList.slice(0, to);
+  setVisible(initialList: CountryType[], offset: number) {
+    const to = this.countriesVisible.length + offset;
+    this.countriesVisible = initialList.slice(0, to);
+  }
+
+  filterList(search: string) {
+    this.searchName = search;
+    if (!this.searchName) this.countriesVisible = [];
+    const filtered = this.countriesList.filter(item => {
+      const regExp = new RegExp(this.searchName, 'i');
+      return regExp.test(item.name);
+    });
+    this.setVisible(filtered, 10);
   }
 
   onScroll() {
-    this.setVisible();
+    if (this.searchName) this.filterList(this.searchName);
+    else this.setVisible(this.countriesList, 5);
   }
 
   ngOnInit(): void {
     this.countries$
     .subscribe((value) => {
       this.countriesList = value;
-      this.setVisible();
-      this.offset = 4;
+      this.setVisible(this.countriesList, 10);
       this.changeDetector.markForCheck();
     });
 

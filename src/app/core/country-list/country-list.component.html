@@ -1,3 +1,11 @@
+<div class="filter-container">
+  <label>
+    <input type="text" placeholder="Search for country..."
+           [ngClass]="{dark: isDark}"
+           [ngModel]="searchName"
+           (ngModelChange)="filterList($event)"/>
+  </label>
+</div>
 <div class="list-container"
      infiniteScroll
      [infiniteScrollDistance]="1"

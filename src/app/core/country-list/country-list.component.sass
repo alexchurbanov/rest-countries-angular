@@ -1,8 +1,44 @@
 @use "src/assets/styles/settings"
 
+\:host
+  display: flex
+  flex-direction: column
+  align-items: center
+
 .list-container
   display: flex
   justify-content: space-evenly
   flex-flow: row wrap
   gap: settings.$gap
 
+.filter-container
+  margin-bottom: settings.$gap
+  padding: 0 10px
+
+  input
+    width: 340px
+    height: 50px
+    padding: 0 35px
+    font-size: 1rem
+    border: none
+    border-radius: 5px
+
+    &.dark
+      background-color: settings.$secondary-color-dark
+      color: white
+
+  label
+    position: relative
+
+  label::before
+    font-family: "Material Icons", sans-serif
+    content: 'search'
+    position: absolute
+    top: -2px
+    left: 5px
+    font-size: 1.5rem
+
+@media screen and (min-width: 760px)
+  \:host
+    display: flex
+    align-items: flex-start

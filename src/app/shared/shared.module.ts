@@ -7,13 +7,12 @@ import { DarkModeButtonComponent } from './dark-mode-button/dark-mode-button.com
   declarations: [
     DarkModeButtonComponent
   ],
-  exports: [
-    DarkModeButtonComponent
-  ],
   imports: [
     CommonModule
   ],
-  providers: []
+  exports: [
+    DarkModeButtonComponent
+  ]
 })
 export class SharedModule {
 }

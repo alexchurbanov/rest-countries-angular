@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { CountryListComponent } from './country-list/country-list.component';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
   ],
   imports: [
     CommonModule,
-    InfiniteScrollModule
+    FormsModule,
+    InfiniteScrollModule,
   ],
   exports: [
     CountryCardComponent,
