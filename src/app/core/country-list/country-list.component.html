@@ -9,7 +9,6 @@
 <div class="list-container"
      infiniteScroll
      [infiniteScrollDistance]="1"
-     [infiniteScrollDisabled]="countriesList.length === countriesVisible.length"
      (scrolled)="onScroll()">
   <app-country-card *ngFor="let country of countriesVisible" [country]="country" [isDark]="isDark"></app-country-card>
 </div>

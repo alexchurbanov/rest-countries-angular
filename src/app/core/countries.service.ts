@@ -40,8 +40,8 @@ export class CountriesService {
     return this.http.get<Array<any>>(`${this.BASE_URL}/all`)
     .pipe(
       catchError(() => of<CountryType[]>([])),
-      map<Array<any>, CountryType[]>(data => {
-        return data.map(item => ({
+      map<Array<any>, CountryType[]>((data) => {
+        const mapped: CountryType[] = data.map(item => ({
           name: item.name.common,
           officialName: item.name.official,
           capital: item.capital ? item.capital[0] : 'Has no capital',
@@ -53,6 +53,11 @@ export class CountriesService {
           googleMapsURL: item.maps.googleMaps,
           timezones: item.timezones
         }));
+        return mapped.sort((a, b) => {
+          if (a.name > b.name) return 1;
+          if (b.name > a.name) return -1;
+          return 0;
+        });
       }),
       tap(data => this._setCountriesData(data)),
     );
