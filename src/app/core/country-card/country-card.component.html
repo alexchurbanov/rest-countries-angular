@@ -6,5 +6,5 @@
     <p><b>Population:</b> {{country.population | number}}</p>
     <p><b>Capital:</b> {{country.capital | titlecase}}</p>
   </div>
-  <a class="country-link" [routerLink]="country.name">See more >></a>
+  <a class="country-link" [routerLink]="['countries/', country.name]">See more >></a>
 </section>
