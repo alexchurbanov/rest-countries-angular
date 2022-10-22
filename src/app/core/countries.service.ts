@@ -4,7 +4,7 @@ import { map, of, tap } from "rxjs";
 
 export interface CountryType {
   name: string;
-  capital: string;
+  capital: Array<string>;
   region: string;
   population: number;
   flagURL: string;
@@ -17,6 +17,8 @@ export interface DetailedCountryType extends CountryType {
   currencies: Array<{ name: string, symbol: string }>;
   languages: Array<string>;
   timezones: Array<string>;
+  isIndependent: boolean;
+  isUNMember: boolean;
 }
 
 @Injectable({
@@ -45,7 +47,7 @@ export class CountriesService {
       map<Array<any>, CountryType[]>((data) => {
         const mapped: CountryType[] = data.map(item => ({
           name: item.name.common,
-          capital: item.capital ? item.capital[0] : 'Has no capital',
+          capital: Array.isArray(item.capital) ? item.capital : [],
           region: `${item.region} ${item.subregion ? '(' + item.subregion + ')' : ''}`,
           population: item.population,
           flagURL: item.flags.png,
@@ -66,7 +68,7 @@ export class CountriesService {
         const mapped: DetailedCountryType[] = data.map(item =>
           ({
             name: item.name.common,
-            capital: item.capital ? item.capital[0] : 'Has no capital',
+            capital: Array.isArray(item.capital) ? item.capital : [],
             region: `${item.region} ${item.subregion ? '(' + item.subregion + ')' : ''}`,
             population: item.population,
             flagURL: item.flags.svg,
@@ -75,7 +77,9 @@ export class CountriesService {
             officialName: item.name.official,
             currencies: item.currencies ? Object.values(item.currencies) : [],
             languages: item.languages ? Object.values(item.languages) : [],
-            timezones: item.timezones || []
+            timezones: item.timezones || [],
+            isIndependent: item.independent,
+            isUNMember: item.unMember
           })
         );
         return mapped;

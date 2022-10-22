@@ -20,8 +20,9 @@ export class CountryDetailsGuard implements Resolve<CountryDetailsResponseType> 
     if (!name) return of<CountryDetailsResponseType>({data: null, error: "404"});
     return this.countriesService.getByName(name).pipe(
       switchMap((data) => {
-        if (data.length !== 1) return of<CountryDetailsResponseType>({data: null, error: "404"});
-        return of<CountryDetailsResponseType>({data: data[0]});
+        const selected = data.find((country) => country.name.toLowerCase() === name.toLowerCase());
+        if (!selected) return of<CountryDetailsResponseType>({data: null, error: "404"});
+        return of<CountryDetailsResponseType>({data: selected});
       }),
       catchError((err: Response) => {
         return of<CountryDetailsResponseType>({data: null, error: `${err.status}`});
