@@ -18,9 +18,10 @@ export class ErrorPageComponent implements OnInit {
     '403': "Forbidden",
     '404': "Page Not Found",
     '500': "Internal Server Error",
-    '502': "Bad Gateway"
+    '502': "Bad Gateway",
+    '503': "Service Unavailable"
   };
-  message!: keyof ErrorListType;
+  message!: string;
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
