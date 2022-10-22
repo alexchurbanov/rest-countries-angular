@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CountriesService, CountryType } from "../countries.service";
-import { Observable, Subject, takeUntil } from "rxjs";
+import { catchError, Observable, of, Subject, takeUntil } from "rxjs";
 import { DarkModeService, DarkModeSourceType } from "../../shared/dark-mode.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-country-card-list',
@@ -20,10 +21,17 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
   constructor(private countriesService: CountriesService,
               private darkModeService: DarkModeService,
-              private changeDetector: ChangeDetectorRef
+              private changeDetector: ChangeDetectorRef,
+              private router: Router
   ) {
     this.unsub$ = new Subject<boolean>();
-    this.countries$ = countriesService.getAll().pipe(takeUntil(this.unsub$));
+    this.countries$ = countriesService.getAll().pipe(
+      takeUntil(this.unsub$),
+      catchError((err: Response) => {
+        this.router.navigate(['/error', `${err.status}`]).then();
+        return of([]);
+      })
+    );
     this.darkMode$ = darkModeService.darkMode$.pipe(takeUntil(this.unsub$));
   }
 

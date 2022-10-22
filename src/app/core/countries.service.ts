@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { catchError, map, of, tap } from "rxjs";
+import { map, of, tap } from "rxjs";
 
 export interface CountryType {
   name: string;
-  capital: string;
+  capital: Array<string>;
   region: string;
   population: number;
   flagURL: string;
+}
+
+export interface DetailedCountryType extends CountryType {
+  officialName: string;
+  coatOfArmsURL: string;
+  googleMapsURL: string;
+  currencies: Array<{ name: string, symbol: string }>;
+  languages: Array<string>;
+  timezones: Array<string>;
+  isIndependent: boolean;
+  isUNMember: boolean;
 }
 
 @Injectable({
@@ -32,13 +43,11 @@ export class CountriesService {
   getAll() {
     const data = this._countriesData;
     if (data.length) return of<CountryType[]>(data);
-    return this.http.get<Array<any>>(`${this.BASE_URL}/all`)
-    .pipe(
-      catchError(() => of<CountryType[]>([])),
+    return this.http.get<Array<any>>(`${this.BASE_URL}/all`).pipe(
       map<Array<any>, CountryType[]>((data) => {
         const mapped: CountryType[] = data.map(item => ({
           name: item.name.common,
-          capital: item.capital ? item.capital[0] : 'Has no capital',
+          capital: Array.isArray(item.capital) ? item.capital : [],
           region: `${item.region} ${item.subregion ? '(' + item.subregion + ')' : ''}`,
           population: item.population,
           flagURL: item.flags.png,
@@ -50,6 +59,31 @@ export class CountriesService {
         });
       }),
       tap(data => this._setCountriesData(data)),
+    );
+  }
+
+  getByName(name: string) {
+    return this.http.get<Array<any>>(`${this.BASE_URL}/name/${name}`).pipe(
+      map<Array<any>, DetailedCountryType[]>(data => {
+        const mapped: DetailedCountryType[] = data.map(item =>
+          ({
+            name: item.name.common,
+            capital: Array.isArray(item.capital) ? item.capital : [],
+            region: `${item.region} ${item.subregion ? '(' + item.subregion + ')' : ''}`,
+            population: item.population,
+            flagURL: item.flags.svg,
+            coatOfArmsURL: item.coatOfArms.svg,
+            googleMapsURL: item.maps.googleMaps,
+            officialName: item.name.official,
+            currencies: item.currencies ? Object.values(item.currencies) : [],
+            languages: item.languages ? Object.values(item.languages) : [],
+            timezones: item.timezones || [],
+            isIndependent: item.independent,
+            isUNMember: item.unMember
+          })
+        );
+        return mapped;
+      })
     );
   }
 }

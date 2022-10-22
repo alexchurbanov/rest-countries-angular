@@ -4,6 +4,14 @@
     <h2>{{country.name | titlecase}}</h2>
     <p><b>Region:</b> {{country.region | titlecase}}</p>
     <p><b>Population:</b> {{country.population | number}}</p>
-    <p><b>Capital:</b> {{country.capital | titlecase}}</p>
+    <p>
+      <b>Capital:&nbsp;</b>
+      <span *ngFor="let capital of country.capital; last as isLast">
+        <span>{{capital}}</span>
+        <span *ngIf="!isLast">,&nbsp;</span>
+      </span>
+      <span *ngIf="!country.capital.length">Has no capital</span>
+    </p>
   </div>
+  <a class="country-link" [routerLink]="['countries/', country.name]">See more <span class="material-icons">travel_explore</span></a>
 </section>

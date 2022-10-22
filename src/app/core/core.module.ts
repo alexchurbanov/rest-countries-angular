@@ -4,20 +4,25 @@ import { CountryCardComponent } from './country-card/country-card.component';
 import { CountryListComponent } from './country-list/country-list.component';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { FormsModule } from "@angular/forms";
+import { RouterLinkWithHref } from "@angular/router";
+import { CountryPageComponent } from './country-page/country-page.component';
 
 @NgModule({
   declarations: [
     CountryCardComponent,
-    CountryListComponent
+    CountryListComponent,
+    CountryPageComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     InfiniteScrollModule,
+    RouterLinkWithHref,
   ],
   exports: [
     CountryCardComponent,
-    CountryListComponent
+    CountryListComponent,
+    CountryPageComponent
   ]
 })
 export class CoreModule {

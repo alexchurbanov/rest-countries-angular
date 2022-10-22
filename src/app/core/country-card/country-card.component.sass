@@ -3,13 +3,27 @@
 $border-radius: 15px
 
 .country
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   width: 350px
-  height: 450px
+  height: 500px
   background: settings.$primary-color-alt
   border-radius: $border-radius
+  color: black
+  padding-bottom: 20px
+
+  a
+    color: black
+    border-color: black
 
 .country.dark
   background: settings.$secondary-color-dark
+  color: white
+
+  a
+    color: white
+    border-color: white
 
 .country-flag
   width: 100%
@@ -19,9 +33,21 @@ $border-radius: 15px
 .country-info
   margin-top: 10px
   text-align: center
+
   h2
     font-size: 1.5rem
     font-weight: 600
+
   p
-    font-size: 1rem
+    font-size: 1.1rem
     font-weight: 400
+
+.country-link
+  font-size: 1.5rem
+  border: 1px solid black
+  border-radius: 5px
+  padding: 5px
+  align-self: center
+  display: flex
+  align-items: center
+  gap: 5px
