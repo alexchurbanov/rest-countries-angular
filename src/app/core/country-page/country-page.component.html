@@ -50,7 +50,7 @@
       <p class="details-title"><span class="material-icons">payments</span> Currencies</p>
       <ul *ngIf="country.currencies.length">
         <li class="details-value" *ngFor="let currency of country.currencies; even as isEven">
-          <span class="material-icons" *ngIf="country.currencies.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{currency.name}} ({{currency.symbol}})
+          <span class="material-icons" *ngIf="country.currencies.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{currency.name}} <span *ngIf="currency.symbol">({{currency.symbol}})</span>
         </li>
       </ul>
       <p class="details-value" *ngIf="!country.currencies.length">Doesn't have own currency</p>
