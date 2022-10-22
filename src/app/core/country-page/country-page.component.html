@@ -13,7 +13,7 @@
   <a [href]="country.googleMapsURL" target="_blank">See on map <span class="material-icons">explore</span></a>
   <div class="details-container">
     <h3>Details</h3>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">location_city</span> Capital</p>
       <ul *ngIf="country.capital.length">
         <li class="details-value" *ngFor="let capital of country.capital;even as isEven">
@@ -22,23 +22,23 @@
       </ul>
       <p class="details-value" *ngIf="!country.capital.length">Doesn't have capital</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">public</span> Region</p>
       <p class="details-value">{{country.region}}</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">diversity_3</span> Population</p>
       <p class="details-value">{{country.population | number}}</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">flag</span> Is Independent</p>
       <p class="details-value">{{country.isIndependent ? "Yes" : "No"}}</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">flag_circle</span> Is United Nations Member</p>
       <p class="details-value">{{country.isUNMember ? "Yes" : "No"}}</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">schedule</span> Timezones</p>
       <ul>
         <li class="details-value" *ngFor="let zone of country.timezones; even as isEven">
@@ -46,7 +46,7 @@
         </li>
       </ul>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">payments</span> Currencies</p>
       <ul *ngIf="country.currencies.length">
         <li class="details-value" *ngFor="let currency of country.currencies; even as isEven">
@@ -55,7 +55,7 @@
       </ul>
       <p class="details-value" *ngIf="!country.currencies.length">Doesn't have own currency</p>
     </div>
-    <div class="details-text">
+    <div class="details-item">
       <p class="details-title"><span class="material-icons">language</span> Languages</p>
       <ul *ngIf="country.languages.length">
         <li class="details-value" *ngFor="let language of country.languages; even as isEven">
