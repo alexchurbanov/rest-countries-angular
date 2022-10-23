@@ -1,0 +1,31 @@
+@use "src/assets/styles/settings"
+
+a
+  position: fixed
+  cursor: pointer
+  text-align: center
+  user-select: none
+  top: 20%
+  right: 0
+  transform: translate(-50%, -50%)
+  border-radius: 50%
+  background-color: settings.$primary-color
+  color: black
+  border: 1px solid black
+  height: 60px
+  width: 60px
+  box-shadow: 2px 7px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0px rgba(0, 0, 0, 0.14), 0 1px 18px 0px rgba(0, 0, 0, 0.12)
+
+  &:after
+    font-family: 'Material Icons', sans-serif
+    content: 'navigation'
+    font-size: 1.5rem
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+  &.dark
+    background-color: settings.$secondary-color-dark
+    color: white
+    border-color: white

@@ -6,6 +6,7 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { FormsModule } from "@angular/forms";
 import { RouterLinkWithHref } from "@angular/router";
 import { CountryPageComponent } from './country-page/country-page.component';
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CountryPageComponent } from './country-page/country-page.component';
     FormsModule,
     InfiniteScrollModule,
     RouterLinkWithHref,
+    SharedModule,
   ],
   exports: [
     CountryCardComponent,

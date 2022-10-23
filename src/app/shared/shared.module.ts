@@ -4,13 +4,15 @@ import { DarkModeButtonComponent } from './dark-mode-button/dark-mode-button.com
 import { LoaderComponent } from './loader/loader.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RouterLinkWithHref } from "@angular/router";
+import { ScrollTopButtonComponent } from './scroll-top-button/scroll-top-button.component';
 
 
 @NgModule({
   declarations: [
     DarkModeButtonComponent,
     LoaderComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ScrollTopButtonComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { RouterLinkWithHref } from "@angular/router";
   exports: [
     DarkModeButtonComponent,
     LoaderComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ScrollTopButtonComponent
   ]
 })
 export class SharedModule {
