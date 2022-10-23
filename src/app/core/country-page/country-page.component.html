@@ -14,52 +14,57 @@
   <div class="details-container">
     <h3>Details</h3>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">location_city</span> Capital</p>
+      <h4 class="details-title"><span class="material-icons">location_city</span> Capital</h4>
       <ul *ngIf="country.capital.length">
         <li class="details-value" *ngFor="let capital of country.capital;even as isEven">
-          <span class="material-icons" *ngIf="country.capital.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{capital}}
+          <span class="material-icons"
+                *ngIf="country.capital.length > 1">{{isEven ? 'hdr_weak' : 'hdr_strong'}}</span> {{capital}}
         </li>
       </ul>
       <p class="details-value" *ngIf="!country.capital.length">Doesn't have capital</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">public</span> Region</p>
+      <h4 class="details-title"><span class="material-icons">public</span> Region</h4>
       <p class="details-value">{{country.region}}</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">diversity_3</span> Population</p>
+      <h4 class="details-title"><span class="material-icons">diversity_3</span> Population</h4>
       <p class="details-value">{{country.population | number}}</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">flag</span> Is Independent</p>
+      <h4 class="details-title"><span class="material-icons">flag</span> Independent</h4>
       <p class="details-value">{{country.isIndependent ? "Yes" : "No"}}</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">flag_circle</span> Is United Nations Member</p>
+      <h4 class="details-title"><span class="material-icons">flag_circle</span> United Nations Member</h4>
       <p class="details-value">{{country.isUNMember ? "Yes" : "No"}}</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">schedule</span> Timezones</p>
+      <h4 class="details-title"><span class="material-icons">schedule</span> Timezones</h4>
       <ul>
         <li class="details-value" *ngFor="let zone of country.timezones; even as isEven">
-          <span class="material-icons" *ngIf="country.timezones.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{zone}}
+          <span class="material-icons"
+                *ngIf="country.timezones.length > 1">{{isEven ? 'hdr_weak' : 'hdr_strong'}}</span> {{zone}}
         </li>
       </ul>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">payments</span> Currencies</p>
+      <h4 class="details-title"><span class="material-icons">payments</span> Currencies</h4>
       <ul *ngIf="country.currencies.length">
         <li class="details-value" *ngFor="let currency of country.currencies; even as isEven">
-          <span class="material-icons" *ngIf="country.currencies.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{currency.name}} <span *ngIf="currency.symbol">({{currency.symbol}})</span>
+          <span class="material-icons"
+                *ngIf="country.currencies.length > 1">{{isEven ? 'hdr_weak' : 'hdr_strong'}}</span> {{currency.name}}
+          <span *ngIf="currency.symbol">({{currency.symbol}})</span>
         </li>
       </ul>
       <p class="details-value" *ngIf="!country.currencies.length">Doesn't have own currency</p>
     </div>
     <div class="details-item">
-      <p class="details-title"><span class="material-icons">language</span> Languages</p>
+      <h4 class="details-title"><span class="material-icons">language</span> Languages</h4>
       <ul *ngIf="country.languages.length">
         <li class="details-value" *ngFor="let language of country.languages; even as isEven">
-          <span class="material-icons" *ngIf="country.languages.length > 1">{{isEven ? 'hdr_weak': 'hdr_strong'}}</span> {{language}}
+          <span class="material-icons"
+                *ngIf="country.languages.length > 1">{{isEven ? 'hdr_weak' : 'hdr_strong'}}</span> {{language}}
         </li>
       </ul>
       <p class="details-value" *ngIf="!country.languages.length">Doesn't have own language</p>
