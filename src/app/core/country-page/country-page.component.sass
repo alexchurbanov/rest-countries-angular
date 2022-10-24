@@ -6,7 +6,6 @@
 .country-page-container
   font-size: 1.3rem
   text-align: center
-  margin: 0 auto
 
 .symbols-container
   display: flex
@@ -30,12 +29,18 @@ figure
   max-width: 170px
 
 .details-container
-  margin: 50px auto 0
-  width: 50%
-  min-width: 320px
+  margin: 0 auto
+  width: 100%
+  min-width: 200px
+  max-width: 1000px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
 
 .details-item
   background-color: settings.$secondary-color
+  width: 100%
   border-radius: 10px
   padding: 5px 0
   margin: 10px 0
@@ -59,7 +64,8 @@ a
   padding: 5px
   border: 1px dashed black
   border-radius: 5px
-  width: 320px
+  width: 100%
+  max-width: 320px
   margin: 20px auto
 
 ul

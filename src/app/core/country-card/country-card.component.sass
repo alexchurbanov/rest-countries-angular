@@ -6,7 +6,7 @@ $border-radius: 15px
   display: flex
   flex-direction: column
   justify-content: space-between
-  width: 350px
+  width: settings.$card-main-width
   height: 500px
   background: settings.$primary-color-alt
   border-radius: $border-radius
@@ -51,3 +51,7 @@ $border-radius: 15px
   display: flex
   align-items: center
   gap: 5px
+
+@media screen and (max-width: 370px)
+  .country
+    width: settings.$card-small-width

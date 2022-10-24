@@ -1,7 +1,7 @@
 <app-scroll-top-button [showWhenY]="600"></app-scroll-top-button>
 <div class="filter-container">
-  <label>
-    <input type="text" placeholder="Search for country..."
+  <label class="filter-label">
+    <input class="filter-input" type="text" placeholder="Search for country..."
            [ngClass]="{dark: isDark}"
            [ngModel]="searchName"
            (ngModelChange)="filterList($event)"/>
