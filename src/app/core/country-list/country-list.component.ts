@@ -5,7 +5,7 @@ import { DarkModeService, DarkModeSourceType } from "../../shared/dark-mode.serv
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-country-card-list',
+  selector: 'app-country-list',
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush

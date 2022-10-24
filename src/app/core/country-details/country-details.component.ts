@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
 import { DetailedCountryType } from "../countries.service";
-import { CountryDetailsResponseType } from "../country-details.guard";
 import { DarkModeService, DarkModeSourceType } from "../../shared/dark-mode.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CountryDetailsResponseType } from "../country-details.guard";
 
 @Component({
-  selector: 'app-country-page',
-  templateUrl: './country-page.component.html',
-  styleUrls: ['./country-page.component.sass']
+  selector: 'app-country-details',
+  templateUrl: './country-details.component.html',
+  styleUrls: ['./country-details.component.sass']
 })
-export class CountryPageComponent implements OnInit {
+export class CountryDetailsComponent implements OnInit {
   country!: DetailedCountryType;
   darkMode$: DarkModeSourceType;
 
@@ -27,5 +27,4 @@ export class CountryPageComponent implements OnInit {
       this.country = data!;
     });
   }
-
 }
