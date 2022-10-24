@@ -6,7 +6,7 @@ header
   width: 100%
   font-size: 1rem
   height: settings.$header-height
-  background-color: settings.$secondary-color
+  background-color: settings.$secondary-color-transparent-light
   display: flex
   justify-content: space-between
   align-items: center
@@ -17,7 +17,8 @@ header
     font-weight: 600
 
 header.dark
-  @include settings.color-dark-secondary
+  background-color: settings.$secondary-color-dark-transparent-light
+  color: white
 
 main
   background-color: settings.$primary-color
@@ -25,4 +26,5 @@ main
   padding: settings.$header-height + settings.$gap settings.$gap settings.$gap
 
 main.dark
-  @include settings.color-dark-primary
+  background-color: settings.$primary-color-dark
+  color: white
