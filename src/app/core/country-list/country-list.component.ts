@@ -29,7 +29,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   countriesList: CountryType[] = [];
   countriesVisible: CountryType[] = [];
   searchName: string = '';
-  isFilterVisible: boolean = true;
+  isFilterVisible: boolean;
 
   constructor(private countriesService: CountriesService,
               private darkModeService: DarkModeService,
@@ -45,6 +45,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
       })
     );
     this.darkMode$ = darkModeService.darkMode$.pipe(takeUntil(this.unsub$));
+    this.isFilterVisible = window.innerWidth > 700;
   }
 
   setVisible(initialList: CountryType[], offset: number) {
