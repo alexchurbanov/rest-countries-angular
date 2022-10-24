@@ -1,10 +1,14 @@
-<div class="filter-container">
-  <label class="filter-label">
+<div class="filter-container" [ngClass]="{dark: isDark}">
+  <label class="filter-label" *ngIf="isFilterVisible">
     <input class="filter-input" type="text" placeholder="Search for country..."
-           [ngClass]="{dark: isDark}"
            [ngModel]="searchName"
            (ngModelChange)="filterList($event)"/>
   </label>
+  <button type="button" class="show-filter-button" (click)="toggleFilter()"
+          [title]="isFilterVisible ? 'Hide Filter' : 'Show Filter'">
+    <span class="material-icons" *ngIf="!isFilterVisible">expand_more</span>
+    <span class="material-icons" *ngIf="isFilterVisible">expand_less</span>
+  </button>
 </div>
 <div class="list-container"
      infiniteScroll

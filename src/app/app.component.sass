@@ -1,13 +1,11 @@
 @use "src/assets/styles/settings"
 
-$header-height: 100px
-
 header
   position: fixed
   z-index: 1
   width: 100%
   font-size: 1rem
-  height: $header-height
+  height: settings.$header-height
   background-color: settings.$secondary-color
   display: flex
   justify-content: space-between
@@ -24,7 +22,7 @@ header.dark
 main
   background-color: settings.$primary-color
   min-height: 100vh
-  padding: $header-height + settings.$gap settings.$gap settings.$gap
+  padding: settings.$header-height + settings.$gap settings.$gap settings.$gap
 
 main.dark
   @include settings.color-dark-primary

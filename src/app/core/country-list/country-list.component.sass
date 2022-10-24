@@ -7,13 +7,16 @@
   gap: settings.$gap
 
 .filter-container
+  position: fixed
+  top: settings.$header-height
+  left: 0
+  z-index: 1
   width: 100%
-  text-align: center
-  margin-bottom: settings.$gap
 
 .filter-label
   position: relative
-  display: inline-block
+  display: block
+  margin: 0 auto
   width: 100%
   min-width: 250px
   max-width: settings.$card-main-width
@@ -27,14 +30,57 @@
     transform: translate(-50%, -50%)
     font-size: 1.5rem
 
+.show-filter-button
+  display: flex
+  align-items: center
+  justify-content: center
+  margin: 0 auto
+  border: none
+  background-color: settings.$primary-color-alt-transparent
+  border-radius: 0 0 5px 5px
+  width: 50px
+  height: 20px
+  .material-icons
+    font-size: 40px
+
 .filter-input
   width: 100%
   height: 50px
   padding: 0 35px
   font-size: 1rem
-  border: none
-  border-radius: 5px
+  border: 1px solid settings.$secondary-color-dark-transparent
+  border-radius: 0 0 5px 5px
+  background-color: settings.$secondary-color
 
-  &.dark
+.filter-container.dark
+  .filter-input
+    border-color: settings.$secondary-color
     background-color: settings.$secondary-color-dark
     color: white
+  .show-filter-button
+    background-color: settings.$secondary-color-dark-transparent
+    color: white
+
+@media screen and (min-width: 700px)
+
+  .show-filter-button
+    display: none
+
+  .filter-container
+    min-width: 250px
+    max-width: 350px
+    top: settings.$header-height / 4
+    z-index: 1
+    left: 25%
+    border: none
+    background-color: transparent
+
+  .filter-input
+    width: 100%
+    border: none
+    border-radius: 5px
+    background-color: settings.$primary-color
+
+  .filter-container.dark
+    .filter-input
+      background-color: settings.$primary-color-dark

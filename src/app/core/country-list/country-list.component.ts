@@ -29,6 +29,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   countriesList: CountryType[] = [];
   countriesVisible: CountryType[] = [];
   searchName: string = '';
+  isFilterVisible: boolean = true;
 
   constructor(private countriesService: CountriesService,
               private darkModeService: DarkModeService,
@@ -64,6 +65,10 @@ export class CountryListComponent implements OnInit, OnDestroy {
   onScroll() {
     if (this.searchName) this.filterList(this.searchName);
     else this.setVisible(this.countriesList, 5);
+  }
+
+  toggleFilter() {
+    this.isFilterVisible = !this.isFilterVisible;
   }
 
   ngOnInit(): void {
