@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: CountryListPageComponent,
-    loadChildren: () => import('./pages/country-list-page/country-list-page.module').then(m => m.CountryListPageModule),
     pathMatch: "full"
   },
   {
