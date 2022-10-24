@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from "./shared/error-page/error-page.component";
-import { CountryListPageComponent } from "./pages/country-list-page/country-list-page.component";
+import { CountryListPageComponent } from "./pages/country-list/country-list-page.component";
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'countries',
-    loadChildren: () => import('./pages/country-page/country-page.module').then(m => m.CountryPageModule),
+    loadChildren: () => import('./pages/country/country-page.module').then(m => m.CountryPageModule),
   },
   {path: 'error/:code', component: ErrorPageComponent},
   {path: '**', redirectTo: 'error/404'}

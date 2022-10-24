@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { LoadingInterceptorService } from "./shared/loading-interceptor.service";
-import { CountryListPageModule } from "./pages/country-list-page/country-list-page.module";
+import { CountryListPageModule } from "./pages/country-list/country-list-page.module";
 
 @NgModule({
   declarations: [

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-    <app-country-details></app-country-details>
+    <router-outlet></router-outlet>
   `
 })
 export class CountryPageComponent {
