@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { catchError, Observable, of, switchMap } from 'rxjs';
-import { CountriesService, DetailedCountryType } from "./countries.service";
+import { CountriesService, DetailedCountryType } from "../countries.service";
 
 export interface CountryDetailsResponseType {
   data: DetailedCountryType | null;

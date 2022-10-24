@@ -3,11 +3,22 @@ import { CountriesService, CountryType } from "../countries.service";
 import { catchError, Observable, of, Subject, takeUntil } from "rxjs";
 import { DarkModeService, DarkModeSourceType } from "../../shared/dark-mode.service";
 import { Router } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { CountryCardComponent } from "../country-card/country-card.component";
 
 @Component({
+  standalone: true,
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.sass'],
+  imports: [
+    CommonModule,
+    FormsModule,
+    InfiniteScrollModule,
+    CountryCardComponent
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountryListComponent implements OnInit, OnDestroy {

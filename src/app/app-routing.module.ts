@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from "./shared/error-page/error-page.component";
-import { CountryListPageComponent } from "./pages/country-list/country-list-page.component";
+import { LandingPageComponent } from "./pages/landing/landing-page.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: CountryListPageComponent,
+    component: LandingPageComponent,
     pathMatch: "full"
   },
   {
