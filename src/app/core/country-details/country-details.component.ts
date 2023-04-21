@@ -25,11 +25,8 @@ export class CountryDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({country}) => {
       const {data, error}: CountryDetailsResponseType = country;
-      if (error) {
-        this.router.navigate(['/error', error]).then();
-        return;
-      }
-      this.country = data!;
+      if (!error && data) this.country = data;
+      else this.router.navigate(['/error', error]).then();
     });
   }
 }
